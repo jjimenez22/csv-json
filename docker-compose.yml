@@ -6,7 +6,7 @@ services:
     ports:
       - "27017:27017"
     networks:
-      - jj-network
+      - csvjson-network
   app:
     container_name: csvjson
     build: .
