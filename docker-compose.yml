@@ -1,0 +1,22 @@
+version: '2'
+services:
+  mongo:
+    container_name: mongo
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    networks:
+      - jj-network
+  app:
+    container_name: csvjson
+    build: .
+    image: csvjson-img:latest
+    ports:
+      - "8080:8080"
+    networks:
+      - csvjson-network
+    depends_on:
+      - mongo
+networks:
+  csvjson-network:
+    driver: bridge
